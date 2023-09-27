@@ -1,0 +1,33 @@
+1. Inisialisasi Repositori Git:
+git init: Membuat repositori Git baru di direktori saat ini.
+
+2. Clone Repositori:
+git clone <URL repositori>: Mengunduh repositori Git yang ada dari URL ke direktori lokal.
+
+3. Status dan Perubahan:
+git status: Menampilkan status perubahan dalam repositori lokal.
+git diff: Menampilkan perbedaan antara direktori kerja dan area indeks.
+git add <nama_file>: Menambahkan perubahan ke area indeks.
+git commit -m "pesan komit": Membuat komit dengan pesan yang menjelaskan perubahan yang dilakukan.
+
+4. Branching dan Merging:
+git branch: Menampilkan daftar cabang (branch) yang ada.
+git branch <nama_cabang>: Membuat cabang baru.
+git checkout <nama_cabang>: Beralih ke cabang tertentu.
+git merge <nama_cabang>: Menggabungkan perubahan dari cabang lain ke cabang saat ini.
+
+5. Penarikan (Pull) dan Dorongan (Push):
+git pull: Mengambil perubahan dari repositori jarak jauh dan menggabungkannya ke cabang saat ini.
+git push: Mengirim perubahan lokal ke repositori jarak jauh.
+
+6. Log dan Riwayat:
+git log: Menampilkan riwayat komit.
+git log --oneline: Menampilkan riwayat komit dalam format ringkas.
+git log <nama_file>: Menampilkan riwayat komit untuk file tertentu.
+
+7. Pengembalian (Revert) dan Pengaturan Ulang (Reset):
+git revert <commit>: Membuat komit baru yang membatalkan perubahan dari komit tertentu.
+git reset <pilihan> <commit>: Mengatur ulang kepala (HEAD) ke komit tertentu. Pilihan dapat berupa --soft, --mixed, atau --hard.
+
+8. Konflik dan Penyelesaiannya:
+Saat melakukan penggabungan (merge), konflik dapat terjadi. Anda perlu mengedit file yang konflik dan kemudian menandai konflik sebagai sudah diselesaikan menggunakan git add <nama_file>.
