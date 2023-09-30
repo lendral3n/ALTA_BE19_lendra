@@ -1,1 +1,3 @@
 # ALTA_BE19_lendra
+
+LENDRA SYAPUTRA
