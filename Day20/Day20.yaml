@@ -1,0 +1,274 @@
+openapi: 3.0.0
+
+info:
+  title: "User API"
+  description: "API for managing users"
+  version: 1.0.0
+  contact:
+    email: "l3nteam@gmail.com"
+
+servers:
+  - url: "http://localhost:8000"
+    description: "Local"
+  - url: "http://websiteku.my/v1"
+    description: "UAT"
+  - url: "https://websiteku.my/{version}"
+    description: "UAT"
+    variables:
+      version:
+        default: "v1"
+        enum:
+          - v1
+          - v2
+
+paths:
+  /users:
+    get:
+      operationId: "getAllUsers"
+      tags:
+        - users
+      summary: "Get all users"
+      description: "Get a list of all users in the system"
+      parameters:
+        - name: name
+          description: "Search parameter based on name, optional"
+          required: false
+          in: query
+          schema:
+            type: string
+        - name: page
+          description: "Pagination feature page setting, required"
+          required: true
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                example:
+                  message: "success"
+                  data:
+                    - user_id: "u001"
+                      name: "lendra"
+                      email: "l3nteam@gmail.com"
+                      password: "password123"
+
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+
+    post:
+      operationId: "postUsers"
+      tags:
+        - users
+      summary: "Create a new user"
+      description: "Create a new user in the system according to the specified input"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userObject'
+            example:
+              name: "lendra"
+              hp: "12345"
+      responses:
+        '201':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responseObject'
+              example:
+                message: "success"
+                data:
+                  user_id: "u001"
+                  name: "lendra"
+                  hp: "12345"
+
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+
+  /users/{id}:
+    get:
+      operationId: "getUserById"
+      tags:
+        - users
+      summary: "Get user by ID"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                user_id: "u001"
+                name: "lendra"
+                email: "l3nteam@gmail.com"
+                password: "password123"
+                message: "success get user by id"
+        '404':
+          description: "User not found"
+          content:
+            application/json:
+              example:
+                message: "user not found"
+
+    put:
+      operationId: "updateUserById"
+      tags:
+        - users
+      summary: "Update user by ID"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userObject'
+            example:
+              name: "updatedName"
+              hp: "54321"
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responseObject'
+              example:
+                message: "success update user by id"
+                data:
+                  user_id: "u001"
+                  name: "updatedName"
+                  hp: "54321"
+        '404':
+          description: "User not found"
+          content:
+            application/json:
+              example:
+                message: "user not found"
+
+    delete:
+      operationId: "deleteUserById"
+      tags:
+        - users
+      summary: "Delete user by ID"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responseObject'
+              example:
+                message: "success delete user by id"
+                data:
+                  user_id: "u001"
+                  name: "deletedName"
+                  hp: "54321"
+        '404':
+          description: "User not found"
+          content:
+            application/json:
+              example:
+                message: "user not found"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    userObject:
+      type: object
+      properties:
+        name:
+          type: string
+        hp:
+          type: string
+
+    responseObject:
+      type: object
+      properties:
+        message:
+          type: string
+        data:
+          $ref: '#/components/schemas/User'
+
+  responses:
+    '400':
+      description: "Invalid user input"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/responseObject'
+          examples:
+            "no name":
+              value:
+                message: "name field required"
+                data: null
+            "invalid hp":
+              value:
+                message: "invalid hp format"
+                data: null
+
+    '401':
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/responseObject'
+          example:
+            message: "fail"
+            data: null
+
+    '500':
+      description: "Internal server error"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/responseObject'
+          example:
+            message: "fail"
+            data: null
