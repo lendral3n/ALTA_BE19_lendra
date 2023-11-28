@@ -34,6 +34,7 @@ NoSQL memiliki beberapa kategori berdasarkan jenis penyimpanan data yang digunak
 
 ## Contoh NoSQL untuk Setiap Kategori
 
+   ![Apache Hadoop HBase](Image/hbase-logo.png)
 1. **Column-family NoSQL Database: Apache Hadoop HBase**
    - Apache Hadoop HBase adalah database Hadoop, yaitu penyimpanan data besar yang didistribusikan dan dapat diskalakan. HBase dirancang untuk menyimpan tabel yang sangat besar -- miliaran baris X jutaan kolom -- di atas kluster perangkat keras komoditas.
    - Use case: HBase biasanya digunakan untuk aplikasi real-time seperti pencarian dan analitik.
@@ -44,8 +45,8 @@ NoSQL memiliki beberapa kategori berdasarkan jenis penyimpanan data yang digunak
    | Mendukung penyimpanan data dalam jumlah besar | Mungkin tidak cocok untuk aplikasi yang membutuhkan transaksi ACID |
    | Memiliki kemampuan untuk menangani akses baca/tulis secara real-time | Mungkin tidak cocok untuk operasi agregasi kompleks |
    
-   ![Apache Hadoop HBase](Image/hbase-logo.png)
 
+   ![ArangoDB](Image/ArangoDB.png)
 2. **Graph NoSQL Database: ArangoDB**
    - ArangoDB adalah database NoSQL yang didistribusikan dan bersifat native multi-model. ArangoDB mendukung tiga model data (grafik, dokumen JSON, pasangan kunci/nilai) dengan satu inti database dan bahasa query yang disatukan.
    - Use case: ArangoDB biasanya digunakan untuk aplikasi yang membutuhkan akses cepat ke data terhubung, seperti deteksi penipuan, manajemen rantai pasokan, analisis jaringan, dan lainnya.
@@ -57,8 +58,8 @@ NoSQL memiliki beberapa kategori berdasarkan jenis penyimpanan data yang digunak
    | Fleksibel dalam model data | Mungkin tidak cocok untuk semua aplikasi |
    | Dapat diskalakan secara dinamis | |
    
-   ![ArangoDB](Image/ArangoDB.png)
 
+   ![Amazon DocumentDB](Image/amazon_documentdb.png)
 3. **Document-based NoSQL Database: Amazon DocumentDB**
    - Amazon DocumentDB adalah layanan database NoSQL yang dikelola dan mendukung struktur data dokumen, dengan beberapa kompatibilitas dengan MongoDB.
    - Use case: Amazon DocumentDB biasanya digunakan untuk aplikasi yang membutuhkan respons latensi rendah, model data fleksibel, dan penskalaan elastis untuk beban kerja dinamis.
@@ -70,8 +71,8 @@ NoSQL memiliki beberapa kategori berdasarkan jenis penyimpanan data yang digunak
    | Penskalaan horizontal | Mungkin tidak sepenuhnya kompatibel dengan semua fitur MongoDB |
    | Dapat menangani beban kerja kritis | |
    
-   ![Amazon DocumentDB](Image/amazon_documentdb.png)
 
+   ![Oracle NoSQL Database](Image/Oracle_NoSQL_Database.png)
 4. **Key/Value NoSQL Database: Oracle NoSQL Database**
    - Oracle NoSQL Database adalah database NoSQL yang didistribusikan dan dapat diskalakan, dirancang untuk memberikan manajemen data yang sangat andal, fleksibel, dan tersedia di seluruh set node penyimpanan yang dapat dikonfigurasi.
    - Use case: Oracle NoSQL Database biasanya digunakan untuk aplikasi yang membutuhkan respons latensi rendah dan fleksibilitas dalam model data.
@@ -83,4 +84,3 @@ NoSQL memiliki beberapa kategori berdasarkan jenis penyimpanan data yang digunak
    | Penskalaan horizontal | Mungkin tidak sepenuhnya kompatibel dengan semua fitur MongoDB |
    | Dapat menangani beban kerja kritis | |
    
-   ![Oracle NoSQL Database](Image/Oracle_NoSQL_Database.png)
